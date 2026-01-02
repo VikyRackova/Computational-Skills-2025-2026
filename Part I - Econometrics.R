@@ -1,5 +1,5 @@
 rm(list = ls())
-setwd("C:/one drive/Počítač/UNI/Master studies/Computational skills")
+setwd("C:/Computational skills")
 source("EOR functions.R")
 library(dplyr)
 library(ggplot2)
@@ -193,5 +193,6 @@ plot.quantiles(
   B = B,
   alpha = alpha
 )
+
 
 
