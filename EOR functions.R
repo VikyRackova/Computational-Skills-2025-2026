@@ -265,8 +265,6 @@ validate.parametric.poisson <- function(x,S, B, alpha, capacities = c(15, 20, 25
     reject[s] <- (out$p_value <= alpha)
     bootstrap_results <- out$results
     
-    # "Sample" column = plug-in estimate on y
-    # "Bootstrap" column = mean of bootstrap distribution
     sample_hat[s, ] <- as.numeric(bootstrap_results[metric_names, "Sample"])
     boot_hat[s, ]   <- as.numeric(bootstrap_results[metric_names, "Bootstrap"])
   }
@@ -637,4 +635,5 @@ plot.quantiles <- function(x,boot_fun,probs = seq(0.50, 0.99, by = 0.01),key_pro
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank()
     )
+
 }
