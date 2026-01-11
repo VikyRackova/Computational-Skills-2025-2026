@@ -1,5 +1,5 @@
 """
-find_optimal_timeslots.py - Grid Search for Optimal Timeslots
+find_optimal_timeslots_v4.py - Grid Search for Optimal Timeslots
 ==============================================================
 Searches over timeslot combinations to find the best for each policy.
 
@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from typing import Dict, List, Tuple
 
-from simulation_core import (
+from simulation_core_v4 import (
     MRISimulationDES,
     TYPE1_TIMESLOT_RANGE, TYPE2_TIMESLOT_RANGE,
     DEFAULT_SIMULATION_DAYS, DEFAULT_NUM_REPLICATIONS,
