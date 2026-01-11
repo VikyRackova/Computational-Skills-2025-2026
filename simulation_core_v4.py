@@ -1,5 +1,5 @@
 """
-simulation_core.py - Core DES Simulation Components
+simulation_core_v4.py - Core DES Simulation Components
 ====================================================
 Contains all building blocks for the MRI scheduling simulation:
 - Configuration parameters (from Part 1 analysis)
