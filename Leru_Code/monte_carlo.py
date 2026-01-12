@@ -121,28 +121,21 @@ def run_one_replication(
     return row
 
 if __name__ == "__main__":
-    # -----------------------------
-    # Settings
-    # -----------------------------
-    csv_path = "ScanRecords_Copy.csv"   # put this next to monte_carlo.py (or change path)
+
+    csv_path = "ScanRecords_Copy.csv"
     num_days = DEFAULT_SIMULATION_DAYS
     num_replications = 10000
 
-    # fixed timeslot lengths (minutes)
+    # fixed timeslot lengths
     timeslot_type1 = 32
     timeslot_type2 = 64
 
     base_seed = 42
 
-    # -----------------------------
-    # Load empirical Type 2 once
-    # -----------------------------
     type2_durations_min, _, type2_interarrival_min = extract_type2_empirical_data(csv_path)
     type2_interarrival_min = type2_interarrival_min[type2_interarrival_min > 0]
 
-    # -----------------------------
-    # Monte Carlo loop
-    # -----------------------------
+    # monte carlo loop
     rows = []
     for rep in range(num_replications):
         seed = base_seed + rep

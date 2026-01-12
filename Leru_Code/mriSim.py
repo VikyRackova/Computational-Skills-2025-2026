@@ -52,7 +52,7 @@ class Patient:
     scan_end_time: float = -1  # Actual end time
 
     def wait_time(self) -> float:
-        """Calculate waiting time from call to appointment in days."""
+        """Calculate waiting time from call to appointment"""
         if self.scheduled_day >= 0:
             return self.scheduled_time - self.call_time
         return 0.0
@@ -183,14 +183,14 @@ class MRISimulationDedicated:
             day_end = (day + 1) * WORK_MINUTES_PER_DAY
             if self.next_slot_start[m] + L > day_end:
                 self.next_slot_start[m] = float((day + 1) * WORK_MINUTES_PER_DAY)
-                day = day + 1  # (optional, for clarity)
+                day = day + 1
 
             # Assign scheduled info
             p.machine_id = m
             p.scheduled_time = self.next_slot_start[m]
             p.scheduled_day = int(p.scheduled_time // WORK_MINUTES_PER_DAY)
 
-            # Reserve the slot (pointer moves exactly once)
+            # Reserve the slot
             self.next_slot_start[m] += L
 
     def run(self) -> Tuple[List[Patient], List[List[float]]]:
@@ -207,7 +207,7 @@ class MRISimulationDedicated:
                 self.overtime_by_day.append([0.0, 0.0])
             self.num_days = max_day + 1
 
-        # Group patients by day and machine (simple and fast)
+        # Group patients by day and machine
         patients_by_day_machine: List[List[List[Patient]]] = [
             [[], []] for _ in range(self.num_days)
         ]
@@ -224,7 +224,7 @@ class MRISimulationDedicated:
             for m in [0, 1]:
                 todays = sorted(patients_by_day_machine[day][m], key=lambda p: p.scheduled_time)
 
-                machine_time = float(day_start)  # machine opens at 08:00 each day
+                machine_time = float(day_start)
 
                 for p in todays:
                     p.scan_start_time = max(p.scheduled_time, machine_time)
@@ -253,7 +253,7 @@ class MRISimulationFlexible:
         # Overtime per day per machine: overtime_by_day[d] = [m0_overtime, m1_overtime]
         self.overtime_by_day: List[List[float]] = [[0.0, 0.0] for _ in range(self.num_days)]
 
-        # Two pointers = next available slot start time per machine (absolute working minutes)
+        # Two pointers = next available slot start time per machine
         self.next_slot_start = [0.0, 0.0]
 
     def schedule_all_patients(self) -> None:
@@ -264,7 +264,7 @@ class MRISimulationFlexible:
             # Slot length depends on patient type
             L = self.timeslot_type1 if p.patient_type == 1 else self.timeslot_type2
 
-            # Earliest allowed is next working day (cannot schedule same day as call)
+            # Earliest allowed is next working day
             earliest_day_start = (p.call_day + 1) * WORK_MINUTES_PER_DAY
 
             # Compute candidate scheduled time on each machine
@@ -297,7 +297,7 @@ class MRISimulationFlexible:
             p.scheduled_time = scheduled_time
             p.scheduled_day = int(scheduled_time // WORK_MINUTES_PER_DAY)
 
-            # Reserve the slot (advance only the chosen machine pointer)
+            # Reserve the slot
             self.next_slot_start[chosen_machine] = scheduled_time + L
 
     def run(self) -> Tuple[List[Patient], List[List[float]]]:
@@ -373,7 +373,7 @@ def extract_type2_empirical_data(csv_path: str) -> Tuple[np.ndarray, np.ndarray,
     type2 = type2.sort_values("call_time_workmin").reset_index(drop=True)
     type2_call_times_workmin = type2["call_time_workmin"].to_numpy()
 
-    type2_interarrival_min = np.diff(type2_call_times_workmin)  # already in minutes
+    type2_interarrival_min = np.diff(type2_call_times_workmin)
 
     return type2_durations_min, type2_call_times_workmin, type2_interarrival_min
 

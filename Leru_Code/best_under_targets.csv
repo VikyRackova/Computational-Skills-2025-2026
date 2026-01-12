@@ -1,0 +1,3 @@
+policy,num_total_combos,num_feasible_combos,best_timeslot_type1,best_timeslot_type2,best_mean_avg_wait_days,best_mean_avg_overtime_per_day_min,best_mean_avg_extra_wait_min
+dedicated,84,14,32,50,1.5663409481706756,0.046475598592489,1.2888078385555717
+flexible,84,25,32,48,1.1459804813412786,0.393231203971699,1.801470754924127
