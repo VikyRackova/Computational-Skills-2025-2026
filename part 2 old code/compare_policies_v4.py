@@ -1,12 +1,12 @@
 """
-compare_policies_v4.py - Compare Policies at Optimal Timeslots
+compare_policies.py - Compare Policies at Optimal Timeslots
 ============================================================
 Runs detailed comparison of dedicated vs pooled policies using their
-respective optimal timeslots (from find_optimal_timeslots_v4.py).
+respective optimal timeslots (from find_optimal_timeslots.py).
 
 Usage:
-    python find_optimal_timeslots_v4.py   # Run first to find optimal timeslots
-    python compare_policies_v4.py         # Then run this to compare
+    python find_optimal_timeslots.py   # Run first to find optimal timeslots
+    python compare_policies.py         # Then run this to compare
 """
 
 import numpy as np
@@ -47,7 +47,7 @@ def run_detailed_simulation(timeslot_type1: int, timeslot_type2: int,
 
 
 def load_optimal_timeslots() -> Dict:
-    """Load optimal timeslots from CSV (created by find_optimal_timeslots_v4.py)."""
+    """Load optimal timeslots from CSV (created by find_optimal_timeslots.py)."""
     if os.path.exists('optimal_timeslots.csv'):
         df = pd.read_csv('optimal_timeslots.csv')
         result = {}

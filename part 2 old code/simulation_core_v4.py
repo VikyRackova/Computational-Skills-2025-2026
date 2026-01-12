@@ -1,5 +1,5 @@
 """
-simulation_core_v4.py - Core DES Simulation Components
+simulation_core.py - Core DES Simulation Components
 ====================================================
 Contains all building blocks for the MRI scheduling simulation:
 - Configuration parameters (from Part 1 analysis)
@@ -39,12 +39,12 @@ MINUTES_PER_HOUR = 60
 MINUTES_PER_DAY = 24 * 60                                                       # 1440 minutes
 
 # Simulation defaults
-DEFAULT_SIMULATION_DAYS = 30
+DEFAULT_SIMULATION_DAYS = 21
 DEFAULT_NUM_REPLICATIONS = 50
 
 # Timeslot search ranges
-TYPE1_TIMESLOT_RANGE = range(24, 36, 2)                                         # 24, 26, 28, 30, 32, 34
-TYPE2_TIMESLOT_RANGE = range(40, 56, 2)                                         # 40, 42, 44, 46, 48, 50, 52, 54
+TYPE1_TIMESLOT_RANGE = range(29, 30, 1)                                         # 24, 26, 28, 30, 32, 34
+TYPE2_TIMESLOT_RANGE = range(57, 58, 1)                                         # 40, 42, 44, 46, 48, 50, 52, 54
 
 
 # DATA STRUCTURES

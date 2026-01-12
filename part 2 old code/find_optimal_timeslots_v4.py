@@ -1,5 +1,5 @@
 """
-find_optimal_timeslots_v4.py - Grid Search for Optimal Timeslots
+find_optimal_timeslots.py - Grid Search for Optimal Timeslots
 ==============================================================
 Searches over timeslot combinations to find the best for each policy.
 
